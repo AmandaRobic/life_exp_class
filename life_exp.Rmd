@@ -14,3 +14,23 @@ knitr::opts_chunk$set(echo = TRUE)
   Here, I re-examine the analysis of Oeppen and Vaupel (2002).
   
 # Analysis
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(gapminder))
+```
+
+```{r}
+data("gapminder_unfiltered")
+nrow(gapminder_unfiltered)
+```
+
+```{r}
+gapminder_unfiltered |> 
+  group_by(year) |>
+  filter(lifeExp == max(lifeExp)) |>
+  ungroup() |>
+  select(year, country, lifeExp) ->
+  sumdat
+```
+
+test
